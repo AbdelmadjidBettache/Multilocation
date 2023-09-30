@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MultilocationModelStoreContainer" CdmEntityContainer="MultilocationEntities">
+    <EntitySetMapping Name="tblClients">
+      <EntityTypeMapping TypeName="MultilocationModel.tblClient">
+        <MappingFragment StoreEntitySet="tblClients">
+          <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+          <ScalarProperty Name="Addresse" ColumnName="Addresse" />
+          <ScalarProperty Name="Ville" ColumnName="Ville" />
+          <ScalarProperty Name="Province" ColumnName="Province" />
+          <ScalarProperty Name="CodePostal" ColumnName="CodePostal" />
+          <ScalarProperty Name="telephone" ColumnName="telephone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblLocations">
+      <EntityTypeMapping TypeName="MultilocationModel.tblLocation">
+        <MappingFragment StoreEntitySet="tblLocations">
+          <ScalarProperty Name="IDLocation" ColumnName="IDLocation" />
+          <ScalarProperty Name="DateDebutLocation" ColumnName="DateDebutLocation" />
+          <ScalarProperty Name="DatePremierPaiment" ColumnName="DatePremierPaiment" />
+          <ScalarProperty Name="MontantPaimentMensuel" ColumnName="MontantPaimentMensuel" />
+          <ScalarProperty Name="NombrePaimentMensuel" ColumnName="NombrePaimentMensuel" />
+          <ScalarProperty Name="NIVVehicule" ColumnName="NIVVehicule" />
+          <ScalarProperty Name="IDClient" ColumnName="IDClient" />
+          <ScalarProperty Name="IDTerme" ColumnName="IDTerme" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblPaiments">
+      <EntityTypeMapping TypeName="MultilocationModel.tblPaiment">
+        <MappingFragment StoreEntitySet="tblPaiments">
+          <ScalarProperty Name="IdPaiment" ColumnName="IdPaiment" />
+          <ScalarProperty Name="DatePaiment" ColumnName="DatePaiment" />
+          <ScalarProperty Name="MontantPaiment" ColumnName="MontantPaiment" />
+          <ScalarProperty Name="IdLocation" ColumnName="IdLocation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblTermes">
+      <EntityTypeMapping TypeName="MultilocationModel.tblTerme">
+        <MappingFragment StoreEntitySet="tblTermes">
+          <ScalarProperty Name="IdTerme" ColumnName="IdTerme" />
+          <ScalarProperty Name="NombreAnnees" ColumnName="NombreAnnees" />
+          <ScalarProperty Name="KilometrageMax" ColumnName="KilometrageMax" />
+          <ScalarProperty Name="PrimeKmExtra" ColumnName="PrimeKmExtra" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblVehicules">
+      <EntityTypeMapping TypeName="MultilocationModel.tblVehicule">
+        <MappingFragment StoreEntitySet="tblVehicules">
+          <ScalarProperty Name="NIVVehicule" ColumnName="NIVVehicule" />
+          <ScalarProperty Name="Annee" ColumnName="Annee" />
+          <ScalarProperty Name="KilometrageSurOdometre" ColumnName="KilometrageSurOdometre" />
+          <ScalarProperty Name="ValeurLivre" ColumnName="ValeurLivre" />
+          <ScalarProperty Name="TransmissionAuto" ColumnName="TransmissionAuto" />
+          <ScalarProperty Name="A_C" ColumnName="A/C" />
+          <ScalarProperty Name="AntiDemarreur" ColumnName="AntiDemarreur" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

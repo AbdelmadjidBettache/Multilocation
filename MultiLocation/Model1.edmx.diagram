@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="739d728980244e04bb31d42e3a3db300" Name="Diagram1">
+        <EntityTypeShape EntityType="MultilocationModel.tblClient" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MultilocationModel.tblLocation" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="MultilocationModel.tblPaiment" Width="1.5" PointX="5.25" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MultilocationModel.tblTerme" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MultilocationModel.tblVehicule" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
+        <AssociationConnector Association="MultilocationModel.FK_tblLocations_tblClients" ManuallyRouted="false" />
+        <AssociationConnector Association="MultilocationModel.FK_tblLocations_tblTermes" ManuallyRouted="false" />
+        <AssociationConnector Association="MultilocationModel.FK_tblLocations_tblVehicules" ManuallyRouted="false" />
+        <AssociationConnector Association="MultilocationModel.FK_tblPaiments_tblLocations" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

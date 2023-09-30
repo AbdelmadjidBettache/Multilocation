@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MultilocationModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tblClient">
+    <Key>
+      <PropertyRef Name="IdClient" />
+    </Key>
+    <Property Name="IdClient" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nom" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="Prenom" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="Addresse" Type="String" MaxLength="40" FixedLength="true" Unicode="true" />
+    <Property Name="Ville" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="Province" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="CodePostal" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="telephone" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="tblLocations" Relationship="Self.FK_tblLocations_tblClients" FromRole="tblClients" ToRole="tblLocations" />
+  </EntityType>
+  <EntityType Name="tblLocation">
+    <Key>
+      <PropertyRef Name="IDLocation" />
+    </Key>
+    <Property Name="IDLocation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DateDebutLocation" Type="DateTime" Precision="0" />
+    <Property Name="DatePremierPaiment" Type="DateTime" Precision="0" />
+    <Property Name="MontantPaimentMensuel" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="NombrePaimentMensuel" Type="Int32" />
+    <Property Name="NIVVehicule" Type="String" MaxLength="25" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="IDClient" Type="Int32" Nullable="false" />
+    <Property Name="IDTerme" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tblClient" Relationship="Self.FK_tblLocations_tblClients" FromRole="tblLocations" ToRole="tblClients" />
+    <NavigationProperty Name="tblTerme" Relationship="Self.FK_tblLocations_tblTermes" FromRole="tblLocations" ToRole="tblTermes" />
+    <NavigationProperty Name="tblVehicule" Relationship="Self.FK_tblLocations_tblVehicules" FromRole="tblLocations" ToRole="tblVehicules" />
+    <NavigationProperty Name="tblPaiments" Relationship="Self.FK_tblPaiments_tblLocations" FromRole="tblLocations" ToRole="tblPaiments" />
+  </EntityType>
+  <EntityType Name="tblPaiment">
+    <Key>
+      <PropertyRef Name="IdPaiment" />
+    </Key>
+    <Property Name="IdPaiment" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DatePaiment" Type="DateTime" Precision="0" />
+    <Property Name="MontantPaiment" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="IdLocation" Type="Int32" />
+    <NavigationProperty Name="tblLocation" Relationship="Self.FK_tblPaiments_tblLocations" FromRole="tblPaiments" ToRole="tblLocations" />
+  </EntityType>
+  <EntityType Name="tblTerme">
+    <Key>
+      <PropertyRef Name="IdTerme" />
+    </Key>
+    <Property Name="IdTerme" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NombreAnnees" Type="Int32" />
+    <Property Name="KilometrageMax" Type="Int32" />
+    <Property Name="PrimeKmExtra" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="tblLocations" Relationship="Self.FK_tblLocations_tblTermes" FromRole="tblTermes" ToRole="tblLocations" />
+  </EntityType>
+  <EntityType Name="tblVehicule">
+    <Key>
+      <PropertyRef Name="NIVVehicule" />
+    </Key>
+    <Property Name="NIVVehicule" Type="String" MaxLength="25" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Annee" Type="DateTime" Precision="0" />
+    <Property Name="KilometrageSurOdometre" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="ValeurLivre" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="TransmissionAuto" Type="Boolean" />
+    <Property Name="A_C" Type="Boolean" />
+    <Property Name="AntiDemarreur" Type="Boolean" />
+    <NavigationProperty Name="tblLocations" Relationship="Self.FK_tblLocations_tblVehicules" FromRole="tblVehicules" ToRole="tblLocations" />
+  </EntityType>
+  <Association Name="FK_tblLocations_tblClients">
+    <End Role="tblClients" Type="Self.tblClient" Multiplicity="1" />
+    <End Role="tblLocations" Type="Self.tblLocation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblClients">
+        <PropertyRef Name="IdClient" />
+      </Principal>
+      <Dependent Role="tblLocations">
+        <PropertyRef Name="IDClient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblLocations_tblTermes">
+    <End Role="tblTermes" Type="Self.tblTerme" Multiplicity="1" />
+    <End Role="tblLocations" Type="Self.tblLocation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblTermes">
+        <PropertyRef Name="IdTerme" />
+      </Principal>
+      <Dependent Role="tblLocations">
+        <PropertyRef Name="IDTerme" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblLocations_tblVehicules">
+    <End Role="tblVehicules" Type="Self.tblVehicule" Multiplicity="1" />
+    <End Role="tblLocations" Type="Self.tblLocation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblVehicules">
+        <PropertyRef Name="NIVVehicule" />
+      </Principal>
+      <Dependent Role="tblLocations">
+        <PropertyRef Name="NIVVehicule" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblPaiments_tblLocations">
+    <End Role="tblLocations" Type="Self.tblLocation" Multiplicity="0..1" />
+    <End Role="tblPaiments" Type="Self.tblPaiment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblLocations">
+        <PropertyRef Name="IDLocation" />
+      </Principal>
+      <Dependent Role="tblPaiments">
+        <PropertyRef Name="IdLocation" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MultilocationEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tblClients" EntityType="Self.tblClient" />
+    <EntitySet Name="tblLocations" EntityType="Self.tblLocation" />
+    <EntitySet Name="tblPaiments" EntityType="Self.tblPaiment" />
+    <EntitySet Name="tblTermes" EntityType="Self.tblTerme" />
+    <EntitySet Name="tblVehicules" EntityType="Self.tblVehicule" />
+    <AssociationSet Name="FK_tblLocations_tblClients" Association="Self.FK_tblLocations_tblClients">
+      <End Role="tblClients" EntitySet="tblClients" />
+      <End Role="tblLocations" EntitySet="tblLocations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblLocations_tblTermes" Association="Self.FK_tblLocations_tblTermes">
+      <End Role="tblTermes" EntitySet="tblTermes" />
+      <End Role="tblLocations" EntitySet="tblLocations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblLocations_tblVehicules" Association="Self.FK_tblLocations_tblVehicules">
+      <End Role="tblVehicules" EntitySet="tblVehicules" />
+      <End Role="tblLocations" EntitySet="tblLocations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblPaiments_tblLocations" Association="Self.FK_tblPaiments_tblLocations">
+      <End Role="tblLocations" EntitySet="tblLocations" />
+      <End Role="tblPaiments" EntitySet="tblPaiments" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

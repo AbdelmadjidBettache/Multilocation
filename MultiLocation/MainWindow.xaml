@@ -1,0 +1,33 @@
+﻿<Window x:Class="MultiLocation.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MultiLocation"
+        mc:Ignorable="d"
+        Title="Ajouter Location" Height="450" Width="800" Loaded="Window_Loaded">
+    <Grid>
+        <Label Content="Date Debut" HorizontalAlignment="Left" Margin="112,112,0,0" VerticalAlignment="Top" Width="75"/>
+        <Label Content="Montant" HorizontalAlignment="Left" Margin="112,0,0,0" VerticalAlignment="Center" Width="128"/>
+        <Label Content="Premier Pay" HorizontalAlignment="Left" Margin="112,159,0,0" VerticalAlignment="Top" Width="75"/>
+        <DatePicker x:Name="dateDebut" HorizontalAlignment="Left" Margin="192,112,0,0" VerticalAlignment="Top" Width="157"/>
+        <DatePicker x:Name="datePremier" HorizontalAlignment="Left" Margin="192,161,0,0" VerticalAlignment="Top" Width="157"/>
+        <TextBox x:Name="txt_montant" HorizontalAlignment="Left" Margin="192,210,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="157" />
+        <Label Content="Terme" HorizontalAlignment="Left" Margin="456,112,0,0" VerticalAlignment="Top" Width="128"/>
+        <Label Content="NIV" HorizontalAlignment="Left" Margin="456,202,0,0" VerticalAlignment="Top" Width="128"/>
+        <Label Content="Client" HorizontalAlignment="Left" Margin="456,159,0,0" VerticalAlignment="Top" Width="128"/>
+        <Label Content="Nb Paye" HorizontalAlignment="Left" Margin="456,242,0,0" VerticalAlignment="Top" Width="128"/>
+        <Button x:Name="btnAddLocation" Content="Ajouter Location" HorizontalAlignment="Left" Margin="349,316,0,0" VerticalAlignment="Top" Width="139" Click="btnAddLocation_Click"  />
+        <ComboBox x:Name="cmbTerme" HorizontalAlignment="Left" Margin="514,113,0,0" VerticalAlignment="Top" Width="194" IsSynchronizedWithCurrentItem="true" ItemsSource="{Binding}" DisplayMemberPath="IdTerme"/>
+        <ComboBox x:Name="cmbPay" HorizontalAlignment="Left" Margin="514,244,0,0" VerticalAlignment="Top" Width="194" >
+            <ComboBoxItem Content="12" IsSelected="True"/>
+            <ComboBoxItem Content="24"/>
+            <ComboBoxItem Content="36"/>
+            <ComboBoxItem Content="48"/>
+        </ComboBox>
+        <ComboBox x:Name="cmbNIV" HorizontalAlignment="Left" Margin="514,204,0,0" VerticalAlignment="Top" Width="194" IsSynchronizedWithCurrentItem="true" ItemsSource="{Binding}" DisplayMemberPath="NIVVehicule"/>
+        <ComboBox x:Name="cbmClient" HorizontalAlignment="Left" Margin="514,163,0,0" VerticalAlignment="Top" Width="194" IsSynchronizedWithCurrentItem="true" ItemsSource="{Binding}" DisplayMemberPath="Nom"/>
+        <Label Content="Ajouter Location" HorizontalAlignment="Left" Margin="302,32,0,0" VerticalAlignment="Top" Width="232" FontWeight="Bold" FontSize="22"/>
+
+    </Grid>
+</Window>
